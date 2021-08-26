@@ -1,0 +1,41 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "page/welcome.html?t=1"
+  },
+  "logoInfo": {
+    "title": "昆虫识别系统",
+    "image": "layuimini/images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "常规管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "昆虫识别",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "识别一下",
+              "href": "page/classify.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "昆虫找茬",
+              "href": "page/game.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

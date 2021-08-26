@@ -1,0 +1,131 @@
+<svg width="494" viewBox="0 0 494 293" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="293">
+    <style type="text/css"><![CDATA[
+.st2 {fill:#000000;font-family:宋体;font-size:10pt;font-weight:bold}
+.st1 {fill:#ffffff;font-family:宋体;font-size:10pt;font-weight:bold}
+]]></style>
+    <defs/>
+    <g transform="translate(-230,-165)">
+        <g transform="translate(231,302)" id="shape1">
+            <path fill="#3498db" stroke="#3498db" d="M83.7,54.7C89.9,54.7,95,49.6,95,43.4L95,11.3C95,5.1,89.9,0,83.7,0L11.3,0C5.1,0,0,5.1,0,11.3L0,43.4C0,49.6,5.1,54.7,11.3,54.7L83.7,54.7z"/>
+            <text class="st1">
+                <tspan x="18.4" y="32.5">前端界面</tspan>
+            </text>
+        </g>
+        <g transform="translate(424.5,181.3)" id="shape2">
+            <path fill="#3498db" stroke="#3498db" d="M83.7,54.7C89.9,54.7,95,49.6,95,43.4L95,11.3C95,5.1,89.9,0,83.7,0L11.3,0C5.1,0,0,5.1,0,11.3L0,43.4C0,49.6,5.1,54.7,11.3,54.7L83.7,54.7z"/>
+            <text class="st1">
+                <tspan x="27.2" y="32.5">Flask</tspan>
+            </text>
+        </g>
+        <g transform="translate(314.66,302)" id="shape3">
+            <path fill="none" stroke="#000000" d="M0,0L106.5,-90.5"/>
+            <path stroke-linecap="round" fill="#000000" stroke="#000000" d="M109.8,-93.3L103.9,-92.3C104.9,-91.9,105.8,-91.3,106.5,-90.5C107.2,-89.7,107.6,-88.7,107.8,-87.7L109.8,-93.3" stroke-width="1"/>
+        </g>
+        <g transform="translate(424.5,394.3)" id="shape4">
+            <path fill="#3498db" stroke="#3498db" d="M83.7,54.7C89.9,54.7,95,49.6,95,43.4L95,11.3C95,5.1,89.9,0,83.7,0L11.3,0C5.1,0,0,5.1,0,11.3L0,43.4C0,49.6,5.1,54.7,11.3,54.7L83.7,54.7z"/>
+            <text class="st1">
+                <tspan x="7.2" y="32.5">SpringBoot</tspan>
+            </text>
+        </g>
+        <g transform="translate(321.5,359)" id="shape5">
+            <path fill="none" stroke="#000000" d="M0,0L99.2,60.4"/>
+            <path stroke-linecap="round" fill="#000000" stroke="#000000" d="M103,62.7L100.1,57.4C100.1,58.4,99.8,59.4,99.2,60.4C98.7,61.3,97.9,62,97,62.5L103,62.7" stroke-width="1"/>
+        </g>
+        <g transform="translate(604,328.3)" id="shape6">
+            <path fill="#3498db" stroke="#3498db" d="M83.7,54.7C89.9,54.7,95,49.6,95,43.4L95,11.3C95,5.1,89.9,0,83.7,0L11.3,0C5.1,0,0,5.1,0,11.3L0,43.4C0,49.6,5.1,54.7,11.3,54.7L83.7,54.7z"/>
+            <text class="st1">
+                <tspan x="11.2" y="32.5">后端数据库</tspan>
+            </text>
+        </g>
+        <g transform="translate(628,181.3)" id="shape7">
+            <path fill="#3498db" stroke="#3498db" d="M83.7,54.7C89.9,54.7,95,49.6,95,43.4L95,11.3C95,5.1,89.9,0,83.7,0L11.3,0C5.1,0,0,5.1,0,11.3L0,43.4C0,49.6,5.1,54.7,11.3,54.7L83.7,54.7z"/>
+            <text class="st1">
+                <tspan x="18.4" y="32.5">识别模型</tspan>
+            </text>
+        </g>
+        <g transform="translate(519.5,192.64)" id="shape8">
+            <path fill="none" stroke="#000000" d="M0,0L104.1,0"/>
+            <path stroke-linecap="round" fill="#000000" stroke="#000000" d="M108.5,0L103.3,-3C103.8,-2.1,104.1,-1.1,104.1,0C104.1,1.1,103.8,2.1,103.3,3L108.5,0" stroke-width="1"/>
+        </g>
+        <g transform="translate(508.16,236)" id="shape9">
+            <path fill="none" stroke="#000000" d="M0,0L97.6,87.1"/>
+            <path stroke-linecap="round" fill="#000000" stroke="#000000" d="M100.8,90L99,84.3C98.8,85.3,98.3,86.3,97.6,87.1C96.8,87.9,95.9,88.5,95,88.8L100.8,90" stroke-width="1"/>
+        </g>
+        <g transform="translate(519.5,405.64)" id="shape10">
+            <path fill="none" stroke="#000000" d="M0,0L80.7,-47.8"/>
+            <path stroke-linecap="round" fill="#000000" stroke="#000000" d="M84.5,-50L78.5,-49.9C79.4,-49.4,80.2,-48.7,80.7,-47.8C81.3,-46.8,81.5,-45.8,81.6,-44.8L84.5,-50" stroke-width="1"/>
+        </g>
+        <g transform="matrix(0.71,-0.71,0.71,0.71,324.1,266.5)" id="shape11">
+            <text class="st2">
+                <tspan x="6.4" y="14.7">图片数据</tspan>
+            </text>
+        </g>
+        <g transform="matrix(0.87,0.5,-0.5,0.87,363.5,346.9)" id="shape12">
+            <text class="st2">
+                <tspan x="6.4" y="21.7">游戏请求</tspan>
+            </text>
+        </g>
+        <g transform="matrix(0.87,-0.5,0.5,0.87,510.9,375)" id="shape13">
+            <text class="st2">
+                <tspan x="6.4" y="14.7">关卡信息</tspan>
+            </text>
+        </g>
+        <g transform="translate(604,371.66)" id="shape14">
+            <path fill="none" stroke="#000000" d="M0,0L-80.7,47.8"/>
+            <path stroke-linecap="round" fill="#000000" stroke="#000000" d="M-84.5,50L-78.5,49.9C-79.4,49.4,-80.2,48.7,-80.7,47.8C-81.3,46.8,-81.5,45.8,-81.6,44.8L-84.5,50" stroke-width="1"/>
+        </g>
+        <g transform="translate(424.5,437.66)" id="shape15">
+            <path fill="none" stroke="#000000" d="M0,0L-127.7,-76.4"/>
+            <path stroke-linecap="round" fill="#000000" stroke="#000000" d="M-131.5,-78.7L-128.6,-73.4C-128.6,-74.4,-128.3,-75.5,-127.7,-76.4C-127.2,-77.3,-126.4,-78.1,-125.5,-78.6L-131.5,-78.7" stroke-width="1"/>
+        </g>
+        <g transform="matrix(0.87,-0.5,0.5,0.87,510.9,432)" id="shape16">
+            <text class="st2">
+                <tspan x="30.4" y="19.7">游戏数据</tspan>
+            </text>
+        </g>
+        <g transform="matrix(0.87,0.5,-0.5,0.87,311.7,373)" id="shape17">
+            <text class="st2">
+                <tspan x="30.4" y="19.7">游戏数据</tspan>
+            </text>
+        </g>
+        <g transform="matrix(0.71,0.71,-0.71,0.71,554.6,231)" id="shape18">
+            <text class="st2">
+                <tspan x="30.4" y="19.7">昆虫类别</tspan>
+            </text>
+        </g>
+        <g transform="translate(604,339.64)" id="shape19">
+            <path fill="none" stroke="#000000" d="M0,0L-109.8,-100.7"/>
+            <path stroke-linecap="round" fill="#000000" stroke="#000000" d="M-113,-103.6L-111.2,-97.9C-111,-98.9,-110.5,-99.9,-109.8,-100.7C-109,-101.5,-108.1,-102,-107.1,-102.3L-113,-103.6" stroke-width="1"/>
+        </g>
+        <g transform="matrix(0.71,0.71,-0.71,0.71,497.6,241.1)" id="shape20">
+            <text class="st2">
+                <tspan x="30.4" y="19.7">昆虫信息</tspan>
+            </text>
+        </g>
+        <g transform="translate(534.06,166)" id="shape21">
+            <text class="st2">
+                <tspan x="11.2" y="16.7">图片数据</tspan>
+            </text>
+        </g>
+        <g transform="translate(628,208.65)" id="shape22">
+            <path fill="none" stroke="#000000" d="M0,0L-104.1,0"/>
+            <path stroke-linecap="round" fill="#000000" stroke="#000000" d="M-108.5,0L-103.3,3C-103.8,2.1,-104.1,1.1,-104.1,0C-104.1,-1.1,-103.8,-2.1,-103.3,-3L-108.5,0" stroke-width="1"/>
+        </g>
+        <g transform="translate(534.06,217)" id="shape23">
+            <text class="st2">
+                <tspan x="11.2" y="9.1">昆虫类别</tspan>
+                <tspan x="18.4" y="24.3">准确率</tspan>
+            </text>
+        </g>
+        <g transform="translate(425,236)" id="shape24">
+            <path fill="none" stroke="#000000" d="M0,0L-95.5,74.6"/>
+            <path stroke-linecap="round" fill="#000000" stroke="#000000" d="M-99,77.3L-93.1,76.5C-94,76.1,-94.9,75.5,-95.5,74.6C-96.2,73.8,-96.6,72.8,-96.8,71.8L-99,77.3" stroke-width="1"/>
+        </g>
+        <g transform="matrix(0.71,-0.71,0.71,0.71,357.8,306.1)" id="shape25">
+            <text class="st2">
+                <tspan x="4" y="12.1">昆虫信息</tspan>
+                <tspan x="11.2" y="27.3">准确率</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

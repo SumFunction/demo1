@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+	<link rel="stylesheet" href="../layuimini/lib/layui-v2.6.3/css/layui.css">
+	<!-- <script src="../layuimini/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+	<script src="../layuimini/js/config.js"></script> -->
+	<script src="../layuimini/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+	<script src="../layuimini/js/config.js"></script>
+	<title>昆虫找茬游戏</title>
+
+	<style type="text/css">
+		.bor {
+			border: 1px solid red;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			text-decoration: none;
+		}
+
+		#back {
+			width: 300px;
+			height: 400px;
+			background: #000;
+			margin: 40.8px auto;
+			/*padding: 50px 50px 0;*/
+			position: absolute;
+			z-index: 1000;
+			top: 0;
+			left: 0;
+			right: 0;
+			opacity: 0.8;
+			display: none;
+		}
+
+		h1 {
+			text-align: center;
+			padding-top: 200px;
+			font-size: 50px;
+		}
+
+		h1 a {
+			color: #fff;
+		}
+
+		.container {
+			position: relative;
+			width: 300px;
+			height: 400px;
+			margin: 0px auto;
+		}
+
+		.left {
+			float: left;
+		}
+
+		.right {
+			float: right;
+		}
+
+		.main {
+			width: 300px;
+			margin: 20px auto 20px;
+			background: orange;
+			text-align: center;
+		}
+
+		.list1 {
+			width: 100%;
+		}
+
+		.list1>img {
+			width: 100%;
+			display: block;
+		}
+
+		button {
+			width: 200px;
+			margin: 0 auto;
+			margin-bottom: 10px;
+			height: 40px;
+			border: 0;
+			border-radius: 10px;
+			background: linear-gradient(#59AD42, #319428);
+			color: #fff;
+			font-size: 20px;
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		button:hover {
+			background: linear-gradient(#319428, #59AD42);
+		}
+
+		#turnOff {
+			width: 200px;
+			height: 40px;
+			display: block;
+			position: absolute;
+			/*background: transparent;*/
+		}
+
+		#change,
+		#remain {
+			display: none;
+
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="back">
+		<h1><a href="">重新开始</a></h1>
+	</div>
+	<div class="container">
+		<div class="left"><span>剩余时间: </span><span id="sec"> 30 </span> s </div>
+		<div class="right"><span>等级: </span><span id="level">1</span></div>
+		<div class="main">
+			<ul>
+				<li class="list1"><img src="../img/2.png"></li>
+			</ul>
+		</div>
+		<div class="left" id="change"><span>剩余尝试机会: </span><span id="changeNum">20</span></div>
+		<div class="right" id="remain"><span>还剩: </span><span id="remainNum">10</span></div>
+		<button>点 击 开 始 游 戏</button>
+		<button id="turnOff">护眼模式</button>
+	</div>
+	<script src="../layuimini/lib/layui-v2.6.3/layui.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		var btn = document.querySelector('button');
+		var timer;
+		var maxLevel = 6;
+		var z = 10.00;//时间
+		var sec = document.getElementById('sec');
+		var uls = document.querySelector('ul');
+		var li_1 = document.getElementsByClassName('list1')[0];
+		var score = document.getElementById('score');
+		var level = 1;//等级
+		var n = 0;//用户已经点击了几个
+		var tryNum = 10;
+		var turnOff = document.getElementById('turnOff');
+		var position = {//位置信息
+		}
+		turnOff.onclick = function () {
+			document.body.style.background = 'rgb(199,237,204)';
+			turnOff.innerHTML = '普通模式';
+			turn();
+		}
+		function turn() {//转换模式函数
+			turnOff.onclick = function () {
+				document.body.style.background = '';
+				turnOff.innerHTML = '护眼模式';
+				turnOff.onclick = function () {
+					document.body.style.background = 'rgb(199,237,204)';
+					turnOff.innerHTML = '普通模式';
+					turn();
+				}
+			}
+		}
+		var sec = document.getElementById("sec");//时间
+		var back = document.getElementById('back');//开始游戏
+		var change = document.getElementById("change");
+		var remain = document.getElementById("remain");
+		var remainNum = document.getElementById("remainNum");
+		var changeNum = document.getElementById("changeNum");
+		var Level = document.getElementById("level");
+		changeNum.innerHTML = tryNum;
+		Level.innerHTML = level;
+		sec.innerHTML = z;
+
+		btn.onclick = function () {
+			// 1.计时器
+			timer = setInterval(setTime, 10);
+			// 2.点击按钮消失,第一个li消失
+			change.style.display = 'block';
+			remain.style.display = 'block';
+			btn.remove();
+			li_1.remove();
+			turnOff.remove();
+			sendGameData(level);//一到游戏画面 获取画面加载信息
+		}
+		function sendGameData(level) {
+			url = ip1 + '/getGameData?level=' + level;
+			$.ajax({
+				type: 'GET',
+				url: url,
+				success: function (data) {
+					position = data.position;
+					position.count = position.num;
+					app();
+					console.log(position);
+				}
+			});
+		}
+		function setTime() {//上方计时器功能
+			z -= 0.01;
+			console.log(z);
+			z = z.toFixed(2);
+			sec.innerHTML = z;
+			if (z <= 0) {
+				clearInterval(timer);
+				layer.msg("时间到！挑战失败", { offset: '100px' });
+				back.style.display = 'block';
+			}
+		}
+		function app() {
+			remainNum.innerHTML = position.num;
+			for (var i = 0; i < 1; i++) {
+				var newLi = document.createElement('li');
+				uls.appendChild(newLi);
+				var newImg = document.createElement('img');
+				newLi.appendChild(newImg);
+				newLi.style.width = 100 + '%';
+				newLi.style.height = 100 + '%';
+				newLi.style.float = 'left';
+				newImg.style.display = 'block';
+				newImg.style.width = 100 + '%';
+				newImg.style.height = 100 + '%';
+				newImg.src = ip1 + '/gameImage' + position.imgUrl;
+			}
+			var imgs1 = document.querySelectorAll('img');
+			imgs1[0].onclick = function (e) {//获取用户点击图片的坐标
+				var offset = $(this).offset();
+				var cur_y = e.pageY - offset.top;
+				var cur_x = e.pageX - offset.left;
+				console.log("x:", cur_x, "y:", cur_y);
+				var flag = false;
+				for (var i = 0; i < position.count; i++) {
+					console.log(position.num);
+					position.lx[i] = parseInt(position.lx[i]);
+					position.rx[i] = parseInt(position.rx[i]);
+					position.ly[i] = parseInt(position.ly[i]);
+					position.ry[i] = parseInt(position.ry[i]);
+					console.log(position.lx[i]);
+					if (cur_x >= position.lx[i] && cur_x <= position.rx[i] && cur_y
+						>= position.ly[i] && cur_y <= position.ry[i]) {
+						var li = document.getElementsByTagName("li")[0];
+						var div = document.createElement("div");
+						li.appendChild(div);
+						li.style.position = "relative";
+
+						div.style.width = (position.rx[i] - position.lx[i]) + 'px';
+						div.style.height = (position.ry[i] - position.ly[i]) + 'px';
+						div.style.position = "absolute";
+						div.setAttribute("class", "bor");
+						div.style.left = position.lx[i] + 'px';
+						div.style.top = position.ly[i] + 'px';
+						remainNum.innerHTML = --position.num;
+						flag = true;
+						if (position.num <= 0) {
+							var titleMsg = "恭喜！闯过第" + level + "关";
+							level++;
+							if (level > 5)
+								titleMsg = "恭喜！闯关成功！";
+							layer = layui.layer;
+							layui.use(['layer'], function () {
+								layer.open({
+									type: 2,
+									content: 'gameRes.html',
+									title: titleMsg,
+									area: ['400px', '400px'],
+									offset: '30px',
+									closeBtn: 0,
+									success: function (layero, index) {//回调数据回显函数
+										clearInterval(timer);
+										var body = layer.getChildFrame('body', index);
+										if (level >= maxLevel)
+											body.find('#go').html("确定");
+										body.find("#one").attr('src', ip1 + '/gameImage' + position.finImageUrl1);
+										body.find("#two").attr('src', ip1 + '/gameImage' + position.finImageUrl2);
+
+									},
+									end: function () {
+										if (level < maxLevel) {
+
+											sendGameData(level);
+											timer = setInterval(setTime, 10);
+											tryNum = 10;
+											position.imgUrl = ip1 + '/gameImage' + position.imgUrl;
+											changeNum.innerHTML = tryNum;
+											remainNum.innerHTML = position.num;
+											Level.innerHTML = level;
+											z = 10;
+											sec.innerHTML = z;
+											newLi.remove();
+										}
+										else {
+											back.style.display = 'block';
+										}
+
+									}
+								});
+							})
+						}
+					}
+				}
+				if (!flag) {
+					changeNum.innerHTML = --tryNum;
+					if (tryNum <= 0) {
+						layer.msg("尝试次数达到！挑战失败", { offset: '100px' });
+						clearInterval(timer);
+						back.style.display = 'block';
+						return;
+					}
+					layer.msg('点错啦', { icon: 5, time: 500, offset: '200px' });
+				}
+			}
+		}
+
+	</script>
+
+	<div style="text-align:center;clear:both">
+	</div>
+</body>
+
+</html>

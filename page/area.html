@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>识别结果</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../layuimini/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../layuimini/css/public.css" media="all">
+    <link rel="stylesheet" href="../layuimini/js/lay-config.js">
+</head>
+
+<style>
+    .shadow {
+        background: white;
+        border-radius: 2px;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.171);
+    }
+
+    #head {
+        height: 90px;
+        margin-top: 10px;
+
+    }
+
+    #left {
+        float: left;
+    }
+
+    #right {
+        margin-left: 20px;
+        float: left;
+    }
+
+    .msg {
+        padding-left: 8px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<body>
+    <div>
+        <img src="" id="img1" alt="暂无法显示" width="100%" height="200px">
+        <div id="head" class="shadow">
+            <div id="left">
+                <img src="" id="img2" alt="" width="90px" height="90px">
+            </div>
+            <div id="right">
+                <div class="msg c" style="margin-top: 5px;">
+                    昆虫名：<span id="name"></span><br>
+                </div>
+                <div class="msg">
+                    准确率：<span id="acc"></span>%<br>
+                </div>
+                <a id="a" href="" style="color: blue;padding-left: 8px;">在百度百科中查看</a>
+            </div>
+
+        </div>
+
+
+        <div class="shadow" style="margin-top: 10px;padding-top: 5px;padding-bottom: 1px;">
+            <div class="msg">
+                别名：<span id="otherName"></span><br>
+            </div>
+
+            <div class="msg">
+                目：<span id="mu"></span><br>
+            </div>
+            <div class="msg">
+                生活习性：<span id="life"></span><br>
+            </div>
+            <div class="msg">
+                价值体现：<span id="value"></span><br>
+            </div>
+            <div class="msg">
+                介绍：<span id="introduce"></span><br>
+            </div>
+        </div>
+
+
+    </div>
+
+    <style>
+        #div_center {
+            text-align: center;
+        }
+    </style>
+</body>
+
+</html>

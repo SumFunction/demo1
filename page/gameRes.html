@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../layuimini/lib/layui-v2.6.3/css/layui.css">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        overflow: hidden;
+    }
+
+    div img {
+        float: left;
+    }
+
+    #go {
+        position: absolute;
+        top: 280px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+</style>
+
+
+<body>
+    <div>
+        <img src="" alt="原图" width="50%" height="100%" id="one">
+        <img src="" alt="对比图" width="50%" height="100%" id="two">
+        <button type="button" class="layui-btn" id="go">继续闯关</button>
+    </div>
+</body>
+<script src="../layuimini/lib/layui-v2.6.3/layui.js"></script>
+<script>
+    var btn = document.getElementById("go");
+    layui.use(['layer'], function () {
+        btn.onclick = function () {
+            console.log(parent.layer.getFrameIndex(window.name));
+            var index = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(index);
+        }
+    })
+
+</script>
+
+</html>

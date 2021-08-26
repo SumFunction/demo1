@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>识别系统</title>
+	<link rel="stylesheet" href="../layuimini/lib/layui-v2.6.3/css/layui.css" media="all">
+</head>
+
+<body>
+
+	<div class="layui-upload">
+		<button type="button" id="test1">
+			<div id="text">图片识别</div>
+			<i class="layui-icon layui-icon-camera"></i>
+		</button>
+		<div class="layui-upload-list">
+			<img class="layui-upload-img" id="demo1">
+			<p id="demoText"></p>
+		</div>
+		<div style="width: 95px;" class="progress">
+			<div class="layui-progress layui-progress-big" lay-showpercent="yes" lay-filter="demo"
+				background-color="white">
+				<div class="layui-progress-bar" lay-percent=""></div>
+			</div>
+		</div>
+		<button id="commit" class="layui-btn">识别一下</button>
+	</div>
+
+	<script src="../layuimini/lib/layui-v2.6.3/layui.js"></script>
+	<script src="../layuimini/js/config.js"></script>
+	<script src="../layuimini/js/data.js"></script>
+	<script>
+		var flag = true;
+		layui.use(['upload', 'element', 'layer'], function () {
+			var $ = layui.jquery
+				, upload = layui.upload
+				, element = layui.element
+				, layer = layui.layer;
+
+			//常规使用 - 普通图片上传
+			var p = navigator.platform;
+			if (p.indexOf("Win") == 0)
+				var size = ['500px', '500px'];
+			else {
+				$(".progress").css("margin-left", "39%");//调整手机端
+				var size = ['300px', '300px'];
+			}
+
+			var uploadInst = upload.render({
+				elem: '#test1'
+				, url: ip + 'upload' //改成您自己的上传接口
+				, auto: false,
+				accept: 'images',
+				acceptMime: 'image/*',
+				choose: function (obj) {
+					//预读本地文件示例，不支持ie8
+					if (p.indexOf("Win") != 0)
+						$(".layui-upload").css("margin-top", "20px");
+					else
+						$(".layui-upload").css("margin-top", "70px");
+					$("#test1").addClass("layui-btn");
+					$("#test1").css("border-radius", "10px");
+					$("#test1").css("margin-bottom", "10px");
+					$("#test1").css("width", "94px");
+					$("#test1").css("height", "38px");
+					$('#test1').text("切换图片");
+					$('#commit').css("display", "block");
+					if (p.indexOf("Win") != 0)
+						$('#commit').css("margin-left", "39%")
+					obj.preview(function (index, file, result) {
+						$('#demo1').attr('src', result); //图片链接（base64）
+						$('#demo1').attr('height', '300px');
+						$('#demo1').attr('width', '300px');
+					});
+				},
+				before: function () {
+					flag = false;
+					element.progress('demo', '0%'); //进度条复位
+					layer.msg('识别中', { icon: 16, time: 0 });
+				}
+				, done: function (res) {
+					//如果上传失败
+					if (res.code > 0) {
+						return layer.msg('识别失败');
+					}
+					tem = res["cate_gory"];
+					URL = res["file_name"];
+					acc = res["prob"];
+					console.log(tem);
+					for (var i = 0; i < Datas.length; i++) {
+						if (Datas[i]["category"] == tem)
+							var R = Datas[i];
+					}
+					//上传成功的一些操作
+					$('#demoText').html(''); //置空上传失败的状态
+					layer.open({
+						type: 2,
+						title: '识别结果',
+						content: 'area.html',
+						area: ['100%', '100%'],
+						success: function (layero, index) {//回调数据回显函数
+							var url1 = ip + URL;
+							var url2 = "../img/sample/" + tem + '.jpg';
+							console.log(Datas);
+							var body = layer.getChildFrame('body');
+							body.find("#acc").text((acc * 100).toFixed(2));
+							body.find("#img1").attr('src', url1);
+							body.find("#img2").attr('src', url2);
+							body.find("#a").attr('href', R["baidu"]);
+							body.find("#name").text(R["name"]);
+
+							body.find("#otherName").text(R["otherName"]);
+							body.find("#mu").text(R["mu"]);
+							body.find("#life").text(R["life"]);
+							body.find("#value").text(R["value"]);
+
+
+							body.find("#introduce").text(Datas[0]["introduce"]);
+							if (p.indexOf("Win") != 0 && flag == false)
+								layer.msg('识别成功', { icon: 1 });
+							flag = true;
+						}
+					});
+
+				}
+				, error: function () {
+					//演示失败状态，并实现重传
+					var demoText = $('#demoText');
+					demoText.html('<span style="color: #ff5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+					demoText.find('.demo-reload').on('click', function () {
+						uploadInst.upload();
+					});
+				}
+				//进度条
+				, progress: function (n, elem, e) {
+					element.progress('demo', n + '%'); //可配合 layui 进度条元素使用
+					if (n == 100) {
+						layer.msg('识别成功', { icon: 1 });
+					}
+				},
+				bindAction: '#commit'
+			});
+		});
+	</script>
+	<style>
+		.layui-upload {
+			text-align: center;
+			margin-top: 130px;
+			position: relative;
+		}
+
+		.progress {
+			text-align: center;
+			margin-left: 47%;
+		}
+
+		#test1,
+		#test1 {
+			width: 250px;
+			height: 250px;
+			background: rgb(51, 171, 160);
+			border: 0px;
+			border-radius: 50%;
+			overflow: hidden;
+			position: relative;
+		}
+
+		#test1 #text,
+		i {
+			color: white;
+		}
+
+		#test1 #text {
+			font-size: 40px;
+			font-weight: 600;
+			text-shadow: black 2px 2px 2px;
+			margin-bottom: 35px;
+		}
+
+		#test1 i {
+			position: absolute;
+			top: 150px;
+			left: 99px;
+			font-size: 50px;
+		}
+
+		#commit {
+			margin-top: 10px;
+			border-radius: 10px;
+			display: none;
+			margin-left: 47%;
+		}
+	</style>
+</body>
+
+</html>
